@@ -39,6 +39,18 @@ export default async function AppLayout({
             >
               Add expense
             </Link>
+            <Link
+              href="/reports"
+              className="label-caps transition-colors hover:text-foreground"
+            >
+              Reports
+            </Link>
+            <Link
+              href="/settings"
+              className="label-caps transition-colors hover:text-foreground"
+            >
+              Settings
+            </Link>
           </nav>
           <div className="ml-auto flex items-baseline gap-4">
             <span className="text-sm text-muted-foreground">

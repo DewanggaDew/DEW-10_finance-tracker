@@ -60,6 +60,9 @@ export const users = pgTable("users", {
   passwordHash: text("password_hash").notNull(),
   isAdmin: boolean("is_admin").notNull().default(false),
   disabledAt: timestamp("disabled_at", { withTimezone: true }),
+  // Telegram capture (P1): chat linked via one-time code from /settings
+  telegramChatId: text("telegram_chat_id").unique(),
+  telegramLinkCode: text("telegram_link_code").unique(),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
     .defaultNow(),

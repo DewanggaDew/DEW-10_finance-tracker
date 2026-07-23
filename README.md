@@ -31,6 +31,15 @@ npm run dev                         # http://localhost:3000
 | `npm run db:generate` / `db:migrate` | Drizzle migrations |
 | `npm run db:seed -- <email> <pw> [name]` | Create admin / reset password |
 | `npx tsx scripts/probe.ts` | Canary: verify Yahoo & CoinGecko still parse |
+| `npx tsx scripts/set-telegram-webhook.ts <url>` | Register the Telegram bot webhook |
+
+## Telegram capture (optional)
+
+Create a bot with [@BotFather](https://t.me/BotFather), put its token in `.env`
+(`TELEGRAM_BOT_TOKEN`, plus a random `TELEGRAM_WEBHOOK_SECRET`), register the
+webhook against your public URL, then link your account from **Settings** in the
+app. After that, `50k kopi` sent to the bot logs an expense and replies with a
+confirmation.
 
 ## Layout
 

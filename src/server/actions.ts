@@ -15,6 +15,7 @@ import {
   portfolios,
   positions,
   transactions,
+  users,
 } from "@/db/schema";
 import { refreshAll, upsertQuote } from "@/jobs/refresh";
 import { requireUserId } from "./session";
@@ -327,6 +328,34 @@ export async function recordTrade(formData: FormData) {
     occurredAt: input.occurredAt ? new Date(input.occurredAt) : new Date(),
   });
   revalidateAll(account.id);
+}
+
+// ---------------------------------------------------------------------------
+// Telegram linking (see /api/telegram)
+// ---------------------------------------------------------------------------
+
+const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+export async function generateTelegramCode() {
+  const userId = await requireUserId();
+  const code = Array.from(
+    { length: 6 },
+    () => CODE_ALPHABET[Math.floor(Math.random() * CODE_ALPHABET.length)],
+  ).join("");
+  await db
+    .update(users)
+    .set({ telegramLinkCode: code })
+    .where(eq(users.id, userId));
+  revalidatePath("/settings");
+}
+
+export async function unlinkTelegram() {
+  const userId = await requireUserId();
+  await db
+    .update(users)
+    .set({ telegramChatId: null, telegramLinkCode: null })
+    .where(eq(users.id, userId));
+  revalidatePath("/settings");
 }
 
 /** Manual "refresh prices now" from the dashboard. */
