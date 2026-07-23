@@ -1,0 +1,25 @@
+{
+  "name": "Kanto",
+  "short_name": "Kanto",
+  "description": "Personal portfolio & finance tracker",
+  "start_url": "/add",
+  "display": "standalone",
+  "background_color": "#f8f6f2",
+  "theme_color": "#f8f6f2",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "share_target": {
+    "action": "/add",
+    "method": "GET",
+    "params": {
+      "text": "text",
+      "title": "title"
+    }
+  }
+}

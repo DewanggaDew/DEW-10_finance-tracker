@@ -33,6 +33,12 @@ export default async function AppLayout({
             >
               Portfolios
             </Link>
+            <Link
+              href="/add"
+              className="label-caps transition-colors hover:text-foreground"
+            >
+              Add expense
+            </Link>
           </nav>
           <div className="ml-auto flex items-baseline gap-4">
             <span className="text-sm text-muted-foreground">
@@ -52,6 +58,14 @@ export default async function AppLayout({
         </div>
       </header>
       <main className="mx-auto max-w-5xl px-6 py-10">{children}</main>
+      {/* Mobile capture shortcut */}
+      <Link
+        href="/add"
+        aria-label="Log expense"
+        className="fixed bottom-6 right-6 flex size-14 items-center justify-center rounded-full bg-primary font-heading text-2xl font-bold text-primary-foreground shadow-lg transition-transform hover:scale-105 md:hidden"
+      >
+        +
+      </Link>
     </div>
   );
 }

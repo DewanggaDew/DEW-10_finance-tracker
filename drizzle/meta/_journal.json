@@ -15,6 +15,13 @@
       "when": 1784806790478,
       "tag": "0001_market-data",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1784809544095,
+      "tag": "0002_capture",
+      "breakpoints": true
     }
   ]
 }

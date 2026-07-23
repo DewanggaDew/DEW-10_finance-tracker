@@ -230,6 +230,9 @@ export const transactions = pgTable("transactions", {
   note: text("note"),
   // Links the two legs of a TRANSFER
   transferGroupId: uuid("transfer_group_id"),
+  // Idempotency key from the offline capture queue — a retried sync of the
+  // same entry must not double-log the expense
+  clientId: uuid("client_id").unique(),
   occurredAt: timestamp("occurred_at", { withTimezone: true }).notNull(),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
